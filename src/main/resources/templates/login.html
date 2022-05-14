@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Fazer login</title>
+
+</head>
+
+<form action="/login" th:action="@{/login}">
+	
+	<h1>Fazer Login</h1>
+
+	<div>
+		<label> Email: <input type="text" name="username" /> </label>
+	</div>
+
+	<div>
+		<label> Senha: <input type="password" name="password" /> </label>
+	</div>
+
+	<div>
+		<input type="submit" value="Logar" />
+	</div>
+</form>
+
+</html>
