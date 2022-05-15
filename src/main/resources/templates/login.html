@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-
-	<title>Fazer login</title>
-
-</head>
-
-<form action="/login" th:action="@{/login}">
-	
-	<h1>Fazer Login</h1>
-
-	<div>
-		<label> Email: <input type="text" name="username" /> </label>
-	</div>
-
-	<div>
-		<label> Senha: <input type="password" name="password" /> </label>
-	</div>
-
-	<div>
-		<input type="submit" value="Logar" />
-	</div>
-</form>
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Fazer Login</title>
+    </head>
+    <body>
+        <div th:if="${param.error}">
+            Algo de errado não está certo :/
+        </div>
+        <div th:if="${param.logout}">
+            Deslogado da aplicação com sucesso!
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div>
+            	<label> Email: <input type="text" name="username"/> </label>
+            </div>
+            <div>
+            	<label> Senha: <input type="password" name="password"/> </label>
+            </div>
+            <div>
+            	<input type="submit" value="Logar"/>
+            </div>
+        </form>
+    </body>
 </html>
