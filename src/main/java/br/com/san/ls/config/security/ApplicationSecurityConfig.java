@@ -25,6 +25,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 				.permitAll();
 	}
 
+	
 
 	
 }
