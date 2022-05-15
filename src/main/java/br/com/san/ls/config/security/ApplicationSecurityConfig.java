@@ -15,11 +15,22 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").defaultSuccessUrl("/user/home").permitAll().and().logout().permitAll();
+		http.authorizeRequests()
+			.antMatchers("/")
+			.permitAll()
+			.anyRequest()
+			.authenticated()
+		.and()
+			.formLogin()
+			.loginPage("/login")
+			.defaultSuccessUrl("/user/home")
+			.permitAll()
+		.and()
+			.logout()
+			.permitAll();
 	}
 
 	@Override
