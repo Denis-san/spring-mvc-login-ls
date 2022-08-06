@@ -1,6 +1,7 @@
 package br.com.san.ls.repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -17,7 +18,7 @@ public class UserLoginDaoImpl implements UserLoginDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public UserLogin findByEmail(String email) {
+	public UserLogin findByEmail(String email) throws NoResultException{
 		TypedQuery<UserLogin> query = entityManager.createQuery("SELECT u FROM UserLogin u WHERE u.email =:email", UserLogin.class);
 		query.setParameter("email", email);
 		
