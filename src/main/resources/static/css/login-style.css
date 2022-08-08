@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+body{
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.container-sm{
+	max-width: 900px;
+}
+
+input[type=submit]{
+	background-color: #060f3a;
+}
+
+input[type=submit]:hover{
+	background-color: rgb(2, 10, 45);
+}

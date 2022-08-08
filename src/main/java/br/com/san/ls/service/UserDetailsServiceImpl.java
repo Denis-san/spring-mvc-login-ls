@@ -26,18 +26,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private HttpServletRequest request;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, NoResultException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		String ip = getClientIp();
 		UserLogin userLogin;
 
+		if(username.isBlank()) {
+			throw new UsernameNotFoundException("Nome de usuário incorreto!");
+		}
+		
 		if (loginAttemptService.isBlocked(ip)) {
 			userLogin = null;
 		} else {
-			userLogin = userLoginDao.findByEmail(username);
+			try {
+				userLogin = userLoginDao.findByEmail(username);
+			} catch (NoResultException err) {
+				userLogin = null;
+			}
 		}
-		
-		
+
 		if (userLogin == null) {
 			throw new UsernameNotFoundException("Usuario não existe");
 		}

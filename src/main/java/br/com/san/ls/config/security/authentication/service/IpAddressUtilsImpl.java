@@ -10,8 +10,8 @@ import java.io.IOException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IpAddressUtilsImpl implements IpAddressUtils{
-	
+public class IpAddressUtilsImpl implements IpAddressUtils {
+
 	@Override
 	public boolean existIp(String ip, String pathFile) {
 
@@ -19,7 +19,9 @@ public class IpAddressUtilsImpl implements IpAddressUtils{
 
 			while (reader.ready()) {
 				String line = reader.readLine();
-				return line.equals(ip);
+				if (line.equals(ip)) {
+					return true;
+				}
 			}
 
 		} catch (IOException e) {
@@ -40,6 +42,7 @@ public class IpAddressUtilsImpl implements IpAddressUtils{
 				file.createNewFile();
 			}
 
+			writer.newLine();
 			writer.append(ip);
 
 		} catch (IOException e) {

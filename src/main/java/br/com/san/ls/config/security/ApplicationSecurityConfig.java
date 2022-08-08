@@ -16,10 +16,18 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+	String[] staticResources  =  {
+	        "/css/**",
+	        "/images/**",
+	        "/fonts/**",
+	        "/scripts/**",
+	        "/"
+	    };
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/")
+			.antMatchers(staticResources)
 			.permitAll()
 			.anyRequest()
 			.authenticated()
@@ -32,7 +40,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 			.permitAll();
 	}
-
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
