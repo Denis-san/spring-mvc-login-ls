@@ -24,11 +24,11 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="mt-4 mb-5 mx-4 text-end">
-					<h6>Já possui uma conta? <a href="/user/userLoginDTO" th:href="@{/user/userLoginDTO}"
+					<h6>Já possui uma conta? <a href="/login" th:href="@{/login}"
 							class="text-reset">Faça login</a></h6>
 				</div>
 
-				<form action="#" th:action="@{/user/processRegister}" th:object="${user}" method="post" class="px-4">
+				<form action="#" th:action="@{/register/processRegister}" th:object="${user}" method="post" class="px-4">
 
 					<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
 						data-bs-interval="false">
@@ -164,7 +164,6 @@
 
 									<div class="invalid-feedback" th:errors="*{userLoginDTO.email}"></div>
 								</div>
-
 
 								<div class="mb-3 px-3">
 									<label for="inputConfEmail" class="form-label">Confirme o

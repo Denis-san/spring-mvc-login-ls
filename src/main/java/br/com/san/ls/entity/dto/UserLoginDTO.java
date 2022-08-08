@@ -1,37 +1,49 @@
 package br.com.san.ls.entity.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import br.com.san.ls.entity.UserLogin;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-public class UserLoginDTO {
+import org.hibernate.validator.constraints.Length;
+
+import br.com.san.ls.entity.UserLogin;
+import br.com.san.ls.validation.FieldsMatch;
+
+@FieldsMatch.Fields({
+	@FieldsMatch(field = "email", fieldVerify = "verifyEmail", message = "Os emails não correspondem!"),
+	@FieldsMatch(field = "password", fieldVerify = "verifyPassword", message = "As senhas não correspondem!") })
+public class UserLoginDTO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	
+
+	@NotBlank
+	@Email
 	private String email;
+	@NotBlank
+	@Email
 	private String verifyEmail;
+	@NotBlank
+	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String password;
+	@NotBlank
+	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String verifyPassword;
-
-	private String codeLogin;
-
-	private boolean verified;
 
 	public UserLoginDTO() {
 
 	}
 
-	public UserLoginDTO(String email, String verifyEmail, String password, String verifyPassword, String codeLogin,
-			boolean verified) {
-		super();
+	public UserLoginDTO(String email, String verifyEmail, String password, String verifyPassword) {
 		this.email = email;
 		this.verifyEmail = verifyEmail;
 		this.password = password;
 		this.verifyPassword = verifyPassword;
-		this.codeLogin = codeLogin;
-		this.verified = verified;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -52,14 +64,6 @@ public class UserLoginDTO {
 		this.password = password;
 	}
 
-	public String getCodeLogin() {
-		return codeLogin;
-	}
-
-	public void setCodeLogin(String codeLogin) {
-		this.codeLogin = codeLogin;
-	}
-
 	public String getVerifyEmail() {
 		return verifyEmail;
 	}
@@ -74,14 +78,6 @@ public class UserLoginDTO {
 
 	public void setVerifyPassword(String verifyPassword) {
 		this.verifyPassword = verifyPassword;
-	}
-
-	public boolean isVerified() {
-		return verified;
-	}
-
-	public void setVerified(boolean verified) {
-		this.verified = verified;
 	}
 
 	public UserLogin toUserLogin() {

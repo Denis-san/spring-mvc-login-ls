@@ -51,6 +51,15 @@
 								aria-label="Close"></button>
 						</div>
 					</div>
+					
+					<div th:if="${registerAutoLoginFail}">
+						<div class="alert alert-danger rounded-0 border-0 py-2 alert-dismissible fade show"
+							role="alert">
+							<strong>Oops!</strong> <span th:text="${registerAutoLoginFail}"></span>
+							<button type="button" class="btn-close p-2 mt-1" data-bs-dismiss="alert"
+								aria-label="Close"></button>
+						</div>
+					</div>
 
 					<div>
 						<label class="fw-bolder">Email:</label>
