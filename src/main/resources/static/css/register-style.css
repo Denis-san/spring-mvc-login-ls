@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+body{
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+
+.btn-success{
+	background-color: #5689a3;
+	border-color: #5689a3;
+}
+
+.btn-success:hover{
+	background-color: #4498a1;
+	border-color: #4498a1;
+}
+
+.btn-outline-secondary{
+	border-color: #2f5061;
+}
+
+.btn-outline-secondary:hover{
+	border-color: #2f5061;
+	background-color: #2f5061;
+	color: white;
+}
