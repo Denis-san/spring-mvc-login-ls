@@ -19,9 +19,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	String[] staticResources  =  {
 	        "/css/**",
 	        "/images/**",
-	        "/fonts/**",
 	        "/scripts/**",
-	        "/"
+	        "/", "/register/**"
 	    };
 	
 	@Override
