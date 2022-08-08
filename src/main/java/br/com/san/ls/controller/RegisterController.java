@@ -1,5 +1,6 @@
 package br.com.san.ls.controller;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -31,13 +32,18 @@ public class RegisterController {
 
 	@PostMapping("/processRegister")
 	public ModelAndView processRegister(@Valid @ModelAttribute("user") UserDTO userDTO, BindingResult bdResult,
-			HttpSession session, HttpServletRequest request, RedirectAttributes flashAttribute) {
+			HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttribute) {
 		ModelAndView mv = new ModelAndView("/user-register");
 
 		if (bdResult.hasErrors() == false) {
 			UserLoginDTO userLoginDTO = userDTO.getUserLoginDTO();
-			
-			mv.setViewName("redirect:/user/home");
+			try {
+				authAutoLogin(request, userLoginDTO.getVerifyEmail(), userLoginDTO.getVerifyPassword());
+				mv.setViewName("redirect:/user/home");
+			} catch (ServletException e) {
+				redirectAttribute.addFlashAttribute("registerAutoLoginFail", "Não foi possível realizar o login. Tente novamente");
+				mv.setViewName("redirect:/login");
+			}
 		} else {
 			for (FieldError error : bdResult.getFieldErrors()) {
 				if (error.getDefaultMessage().contains("emails")) {
@@ -53,5 +59,8 @@ public class RegisterController {
 		return mv;
 	}
 
+	private void authAutoLogin(HttpServletRequest request, String username, String password) throws ServletException {
+			request.login(username, password);
+	}
 
 }
