@@ -13,7 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "user_login")
+@Table(name = "tb_user_login")
 public class UserLogin implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;

@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+## project files ##
+src/main/resources/ip_file.txt

@@ -24,11 +24,11 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="mt-4 mb-5 mx-4 text-end">
-					<h6>Já possui uma conta? <a href="/login" th:href="@{/login}"
-							class="text-reset">Faça login</a></h6>
+					<h6>Já possui uma conta? <a href="/login" th:href="@{/login}" class="text-reset">Faça login</a></h6>
 				</div>
 
-				<form action="#" th:action="@{/register/processRegister}" th:object="${user}" method="post" class="px-4">
+				<form action="#" th:action="@{/register/processRegister}" th:object="${user}" method="post"
+					class="px-4">
 
 					<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
 						data-bs-interval="false">
@@ -152,9 +152,19 @@
 							<div class="carousel-item">
 
 								<div class="px-3">
-									<h6 class="text-muted">Insira um email e crie uma senha para acessar sua conta :)</h6>
+									<h6 class="text-muted">Insira um email e crie uma senha para acessar sua conta :)
+									</h6>
 								</div>
-								
+
+								<div th:if="${errorEmailAlreadyExist}">
+									<div class="alert alert-danger rounded-0 border-0 py-2 alert-dismissible fade show"
+										role="alert">
+										<strong>Erro!</strong> <span th:text="${errorEmailAlreadyExist}"></span>
+										<button type="button" class="btn-close p-2 mt-1" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+								</div>
+
 								<div class="py-3 text-danger" th:errors="*{userLoginDTO}"></div>
 
 								<div class="mb-3 px-3">
