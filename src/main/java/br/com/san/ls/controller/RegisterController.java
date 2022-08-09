@@ -46,7 +46,6 @@ public class RegisterController {
 			try {
 				userService.saveNewUser(userDTO);
 				authAutoLogin(request, userLoginDTO.getVerifyEmail(), userLoginDTO.getVerifyPassword());
-				mv.setViewName("redirect:/user/home");
 			} catch (ServletException e) {
 				redirectAttribute.addFlashAttribute("registerAutoLoginFail", "Não foi possível realizar o login. Tente novamente");
 				mv.setViewName("redirect:/login");
