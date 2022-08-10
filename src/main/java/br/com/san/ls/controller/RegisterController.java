@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.san.ls.config.security.utils.AuthUtils;
 import br.com.san.ls.entity.dto.UserDTO;
 import br.com.san.ls.entity.dto.UserLoginDTO;
 import br.com.san.ls.service.UserService;
@@ -28,10 +29,18 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private AuthUtils authUtils;
+
 	@GetMapping("/new")
 	public ModelAndView showRegisterForm() {
 		ModelAndView mv = new ModelAndView("user-register");
-		mv.addObject("user", new UserDTO());
+
+		if (authUtils.userIsAuthenticated()) {
+			mv.setViewName("redirect:/user/home");
+		} else {
+			mv.addObject("user", new UserDTO());
+		}
 
 		return mv;
 	}

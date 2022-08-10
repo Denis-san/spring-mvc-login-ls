@@ -8,22 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.san.ls.config.security.authentication.constant.FilePathConstant;
 import br.com.san.ls.config.security.authentication.service.IpAddressUtils;
+import br.com.san.ls.config.security.utils.AuthUtils;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private IpAddressUtils ipAddressUtils;
 
+	@Autowired
+	private AuthUtils authUtils;
+
 	@GetMapping("/login")
 	public String showLoginForm(HttpServletRequest request) {
-		
+
 		String ip = getClientIp(request);
-		
-		if(ipAddressUtils.existIp(ip, FilePathConstant.PATH_FILE_ID_BLOCK)) {
+
+		if (authUtils.userIsAuthenticated()) {
+			return "redirect:/user/home";
+		}
+
+		if (ipAddressUtils.existIp(ip, FilePathConstant.PATH_FILE_ID_BLOCK)) {
 			return "exceeded-login-attempts";
 		}
-		
+
 		return "login";
 	}
 
