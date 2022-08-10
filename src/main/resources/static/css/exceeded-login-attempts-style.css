@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+h1 {
+	font-size: 10vw;
+	font-family: 'Mochiy Pop One';
+}
+
+h2{
+	font-family: 'Nunito Sans';
+	font-size: 2.5vw;
+}
+
+p{
+	font-family: 'Nunito Sans';
+	font-size: 1.3vw;
+}

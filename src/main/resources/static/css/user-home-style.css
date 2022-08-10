@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+
+body {
+    font-family: 'Nunito Sans';
+}
+
+.navbar {
+    background-color: #293040;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+li{
+    list-style: none;
+}
+
+
+.btn-close-alert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    box-sizing: content-box;
+}
+
+.btn-mobile{
+    display: none;
+}
+
+.divider{
+    height: 2px;
+    width: 40%;
+    background-color: #999999;
+}
+
+.icon-tech{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.icon-tech1{
+    background-color: #20b45a;
+}
+
+.icon-tech2{
+    background-color: #0076ff;
+}
+
+.icon-tech3{
+    background-color: #eb912a;
+}
+
+@media screen and (max-width: 600px) {
+    .btn-mobile{
+        display: inline;
+    }
+
+    #btn-logout, #link-repo{
+        display: none;
+    }
+
+    .icons-mobile{
+        text-align: center;
+    }
+
+    ul{
+        padding-left: 0;
+    }
+
+    li{
+        margin-bottom: 1rem;
+    }
+}

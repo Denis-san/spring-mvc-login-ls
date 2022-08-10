@@ -21,7 +21,7 @@ public class LoginController {
 		String ip = getClientIp(request);
 		
 		if(ipAddressUtils.existIp(ip, FilePathConstant.PATH_FILE_ID_BLOCK)) {
-			return "ip-blocked";
+			return "exceeded-login-attempts";
 		}
 		
 		return "login";

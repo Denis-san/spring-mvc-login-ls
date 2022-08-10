@@ -46,7 +46,7 @@
 					<div th:if="${param.error}">
 						<div class="alert alert-danger rounded-0 border-0 py-2 alert-dismissible fade show"
 							role="alert">
-							<strong>Oops!</strong> Email ou senha incorreto(a)!
+							<strong>Oops!</strong> Usuário ou senha incorreto(a)!
 							<button type="button" class="btn-close p-2 mt-1" data-bs-dismiss="alert"
 								aria-label="Close"></button>
 						</div>
@@ -62,11 +62,11 @@
 					</div>
 
 					<div>
-						<label class="fw-bolder">Email:</label>
-						<input type="email" name="username" class="form-control field rounded-1"
-							placeholder="email@example.com" />
+						<label class="fw-bolder">Usuário:</label>
+						<input type="text" name="username" class="form-control field rounded-1"
+							placeholder="Nome de usuário" />
 							<div class="invalid-feedback">
-							Insira um email!
+							Insira um nome de usuário!
 						</div>
 					</div>
 
@@ -87,6 +87,9 @@
 					<div>
 						<input type="submit" value="Entrar" class="py-2 border-0 w-100 rounded-1 my-5 text-white fw-bold" />
 					</div>
+					
+					
+					
 				</form>
 			</div>
 		</div>

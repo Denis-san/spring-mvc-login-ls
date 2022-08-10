@@ -23,7 +23,7 @@ public class AddressDTO implements Serializable {
 	private String complement;
 	private Integer number;
 
-	@NotNull(message = "você deve selecionar um")
+	@NotNull(message = "Selecione um")
 	private State state;
 
 	public AddressDTO() {
