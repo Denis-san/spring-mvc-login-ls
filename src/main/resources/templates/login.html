@@ -51,7 +51,7 @@
 								aria-label="Close"></button>
 						</div>
 					</div>
-					
+
 					<div th:if="${registerAutoLoginFail}">
 						<div class="alert alert-danger rounded-0 border-0 py-2 alert-dismissible fade show"
 							role="alert">
@@ -65,7 +65,7 @@
 						<label class="fw-bolder">Usuário:</label>
 						<input type="text" name="username" class="form-control field rounded-1"
 							placeholder="Nome de usuário" />
-							<div class="invalid-feedback">
+						<div class="invalid-feedback">
 							Insira um nome de usuário!
 						</div>
 					</div>
@@ -84,12 +84,14 @@
 						<a href="/forgot-password" class="text-decoration-none text-dark">Esqueceu a senha?</a>
 					</div>
 
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
 					<div>
-						<input type="submit" value="Entrar" class="py-2 border-0 w-100 rounded-1 my-5 text-white fw-bold" />
+						<input type="submit" value="Entrar"
+							class="py-2 border-0 w-100 rounded-1 my-5 text-white fw-bold" />
 					</div>
-					
-					
-					
+
+
 				</form>
 			</div>
 		</div>
