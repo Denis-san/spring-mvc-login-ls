@@ -3,7 +3,6 @@ package br.com.san.ls.entity.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -12,23 +11,20 @@ import br.com.san.ls.entity.UserLogin;
 import br.com.san.ls.validation.FieldsMatch;
 
 @FieldsMatch.Fields({
-	@FieldsMatch(field = "email", fieldVerify = "verifyEmail", message = "Os emails não correspondem!"),
-	@FieldsMatch(field = "password", fieldVerify = "verifyPassword", message = "As senhas não correspondem!") })
-public class UserLoginDTO implements Serializable{
+		@FieldsMatch(field = "password", fieldVerify = "verifyPassword", message = "As senhas não correspondem!") })
+public class UserLoginDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
 	@NotBlank
-	@Email
-	private String email;
-	@NotBlank
-	@Email
-	private String verifyEmail;
+	private String loginName;
+	
 	@NotBlank
 	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String password;
+	
 	@NotBlank
 	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String verifyPassword;
@@ -37,9 +33,8 @@ public class UserLoginDTO implements Serializable{
 
 	}
 
-	public UserLoginDTO(String email, String verifyEmail, String password, String verifyPassword) {
-		this.email = email;
-		this.verifyEmail = verifyEmail;
+	public UserLoginDTO(String loginName, String password, String verifyPassword) {
+		this.loginName = loginName;
 		this.password = password;
 		this.verifyPassword = verifyPassword;
 	}
@@ -48,12 +43,12 @@ public class UserLoginDTO implements Serializable{
 		return id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getLoginName() {
+		return loginName;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 
 	public String getPassword() {
@@ -62,14 +57,6 @@ public class UserLoginDTO implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getVerifyEmail() {
-		return verifyEmail;
-	}
-
-	public void setVerifyEmail(String verifyEmail) {
-		this.verifyEmail = verifyEmail;
 	}
 
 	public String getVerifyPassword() {
@@ -82,14 +69,14 @@ public class UserLoginDTO implements Serializable{
 
 	public UserLogin toUserLogin() {
 		UserLogin userLogin = new UserLogin();
-		userLogin.setEmail(this.email);
+		userLogin.setLoginName(this.loginName);
 		userLogin.setUserPassword(this.password);
 		return userLogin;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, password);
+		return Objects.hash(loginName, password);
 	}
 
 	@Override
@@ -101,7 +88,7 @@ public class UserLoginDTO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		UserLoginDTO other = (UserLoginDTO) obj;
-		return Objects.equals(email, other.email) && Objects.equals(password, other.password);
+		return Objects.equals(loginName, other.loginName) && Objects.equals(password, other.password);
 	}
 
 }

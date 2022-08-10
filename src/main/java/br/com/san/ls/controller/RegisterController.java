@@ -24,7 +24,7 @@ import br.com.san.ls.service.exception.UserAlreadyExistsException;
 @RequestMapping("/register")
 @Controller
 public class RegisterController {
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -45,18 +45,17 @@ public class RegisterController {
 			UserLoginDTO userLoginDTO = userDTO.getUserLoginDTO();
 			try {
 				userService.saveNewUser(userDTO);
-				authAutoLogin(request, userLoginDTO.getVerifyEmail(), userLoginDTO.getVerifyPassword());
+				authAutoLogin(request, userLoginDTO.getLoginName(), userLoginDTO.getPassword());
+				mv.setViewName("redirect:/user/home");
 			} catch (ServletException e) {
-				redirectAttribute.addFlashAttribute("registerAutoLoginFail", "Não foi possível realizar o login. Tente novamente");
+				redirectAttribute.addFlashAttribute("registerAutoLoginFail",
+						"Não foi possível realizar o login. Tente novamente");
 				mv.setViewName("redirect:/login");
 			} catch (UserAlreadyExistsException e) {
-				mv.addObject("errorEmailAlreadyExist", e.getMessage());
+				mv.addObject("errorloginNameAlreadyExist", e.getMessage());
 			}
 		} else {
 			for (FieldError error : bdResult.getFieldErrors()) {
-				if (error.getDefaultMessage().contains("emails")) {
-					mv.addObject("emailVerifyError", error.getDefaultMessage());
-				}
 				if (error.getDefaultMessage().contains("senhas")) {
 					mv.addObject("passwordVerifyError", error.getDefaultMessage());
 				}
@@ -68,7 +67,7 @@ public class RegisterController {
 	}
 
 	private void authAutoLogin(HttpServletRequest request, String username, String password) throws ServletException {
-			request.login(username, password);
+		request.login(username, password);
 	}
 
 }

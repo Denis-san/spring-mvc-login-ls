@@ -26,12 +26,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private HttpServletRequest request;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String loginName) throws UsernameNotFoundException {
 
 		String ip = getClientIp();
 		UserLogin userLogin;
 
-		if(username.isBlank()) {
+		if(loginName.isBlank()) {
 			throw new UsernameNotFoundException("Nome de usuário incorreto!");
 		}
 		
@@ -39,7 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			userLogin = null;
 		} else {
 			try {
-				userLogin = userLoginDao.findByEmail(username);
+				userLogin = userLoginDao.findByLoginName(loginName);
 			} catch (NoResultException err) {
 				userLogin = null;
 			}

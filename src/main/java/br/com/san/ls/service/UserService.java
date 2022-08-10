@@ -7,5 +7,5 @@ public interface UserService {
 
 	void saveNewUser(UserDTO userDTO) throws UserAlreadyExistsException;
 	
-	boolean emailAlreadyExists(String email);
+	boolean loginNameAlreadyExists(String loginName);
 }

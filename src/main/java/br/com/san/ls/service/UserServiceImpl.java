@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveNewUser(UserDTO userDTO) throws UserAlreadyExistsException {
 
-		if (emailAlreadyExists(userDTO.getUserLoginDTO().getVerifyEmail())) {
-			throw new UserAlreadyExistsException("Já existe uma conta com este email!");
+		if (loginNameAlreadyExists(userDTO.getUserLoginDTO().getLoginName())) {
+			throw new UserAlreadyExistsException("Já existe uma conta com este nome de usuário!");
 		} else {
 
 			User user = userDTO.toUser();
@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean emailAlreadyExists(String email) {
-		return userDao.emailAlreadyExists(email);
+	public boolean loginNameAlreadyExists(String loginName) {
+		return userDao.usernameAlreadyExists(loginName);
 	}
 
 }

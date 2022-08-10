@@ -4,6 +4,6 @@ import br.com.san.ls.entity.UserLogin;
 
 public interface UserLoginDAO {
 	
-	public UserLogin findByEmail(String email);
+	public UserLogin findByLoginName(String loginName);
 	
 }

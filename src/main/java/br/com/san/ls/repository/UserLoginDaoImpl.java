@@ -18,9 +18,9 @@ public class UserLoginDaoImpl implements UserLoginDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public UserLogin findByEmail(String email) throws NoResultException{
-		TypedQuery<UserLogin> query = entityManager.createQuery("SELECT u FROM UserLogin u WHERE u.email =:email", UserLogin.class);
-		query.setParameter("email", email);
+	public UserLogin findByLoginName(String loginName) throws NoResultException{
+		TypedQuery<UserLogin> query = entityManager.createQuery("SELECT u FROM UserLogin u WHERE u.loginName =:loginName", UserLogin.class);
+		query.setParameter("loginName", loginName);
 		
 		UserLogin userLogin = query.getSingleResult();
 

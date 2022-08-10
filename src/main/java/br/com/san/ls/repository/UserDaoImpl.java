@@ -23,9 +23,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean emailAlreadyExists(String email) {
-		Query query = entityManager.createQuery("SELECT u.email FROM UserLogin u WHERE u.email=:email");
-		query.setParameter("email", email);
+	public boolean usernameAlreadyExists(String loginName) {
+		Query query = entityManager.createQuery("SELECT u.loginName FROM UserLogin u WHERE u.loginName=:loginName");
+		query.setParameter("loginName", loginName);
 		try {
 			Object objt = query.getSingleResult();
 

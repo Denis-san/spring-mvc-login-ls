@@ -6,6 +6,6 @@ public interface UserDao {
 
 	void saveNewUser(User user);
 	
-	boolean emailAlreadyExists(String email);
+	boolean usernameAlreadyExists(String loginName);
 	
 }
