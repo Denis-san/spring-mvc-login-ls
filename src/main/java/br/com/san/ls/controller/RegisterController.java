@@ -48,7 +48,7 @@ public class RegisterController {
 	@PostMapping("/processRegister")
 	public ModelAndView processRegister(@Valid @ModelAttribute("user") UserDTO userDTO, BindingResult bdResult,
 			HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttribute) {
-		ModelAndView mv = new ModelAndView("/user-register");
+		ModelAndView mv = new ModelAndView("user-register");
 
 		if (bdResult.hasErrors() == false) {
 			UserLoginDTO userLoginDTO = userDTO.getUserLoginDTO();
