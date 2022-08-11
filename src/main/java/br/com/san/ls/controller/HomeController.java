@@ -8,14 +8,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String showHome() {
-		return "home.html";
+		return "redirect:/login";
 	}
-	
-	
-	@RequestMapping("/user/home")
-	public String showUserHome() {
-		return "user-home.html";
-	}
-	
 	
 }
