@@ -8,6 +8,7 @@ body{
 	max-width: 900px;
 	background-repeat: no-repeat;
 	background-image: url('/images/background-register.jpg');
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
 }
 
 .carousel-item{
@@ -33,3 +34,21 @@ body{
 	background-color: #635924;
 	color: white;
 }
+
+@media screen and (max-width: 600px) {
+	.container-sm{
+		background-image: none;
+		box-shadow: none;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+

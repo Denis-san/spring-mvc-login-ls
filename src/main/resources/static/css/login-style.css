@@ -6,6 +6,7 @@ body{
 
 .container-sm{
 	max-width: 900px;
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
 }
 
 input[type=submit]{
@@ -14,4 +15,24 @@ input[type=submit]{
 
 input[type=submit]:hover{
 	background-color: rgb(2, 10, 45);
+}
+
+#form-login{
+	padding-right: 3rem;
+	padding-left: 3rem;
+}
+
+@media screen and (max-width: 767px){
+	.side-background{
+		display: none;
+	}
+	
+	.container-sm{
+		box-shadow: none;
+	}
+	
+	#form-login{
+		padding-left: 0;
+		padding-right: 0;
+	}
 }

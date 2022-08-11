@@ -17,9 +17,9 @@
 </head>
 
 <body>
-	<div class="container-sm shadow-lg mt-4">
+	<div class="container-sm mt-4">
 		<div class="row">
-			<div class="col-md-5 p-0">
+			<div class="col-md-5 p-0 side-background">
 				<img src="/images/side-duo.jpg" class="w-100 h-100">
 			</div>
 			<div class="col-md-7 px-5">
@@ -32,7 +32,7 @@
 					<h4 class="fw-bold">Login</h4>
 				</div>
 
-				<form th:action="@{/login}" method="post" class="px-5" onsubmit="return verifyInputs()">
+				<form th:action="@{/login}" method="post"  onsubmit="return verifyInputs()" id="form-login">
 
 					<div th:if="${param.logout}">
 						<div class="alert alert-primary rounded-0 border-0 py-2 alert-dismissible fade show"
